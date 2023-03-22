@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <h1>task description:</h1>
+
+      <textarea placeholder="task..." id='taskInput'></textarea>
+
+    <h2>due date:</h2>
+    
+    <input placeholder="  ? / ? / ?" id="dateInput">
+
+    <br><br>
+
+    <button onclick="AddRow()"> submit </button>
+
+<br><br>
+
+</div>
+
+    <table  id='show' align="center" width="300">
+        <tr >
+                           <th>task</th>
+                           <th>date</th>
+                                            </tr> 
+
+
+
+
+    <script>
+          id = 0
+		function AddRow() {
+			var table = document.getElementById('show');
+            var taskInput = document.getElementById("taskInput");
+            var dateInput = document.getElementById("dateInput");
+
+            var taskValue = taskInput.value;
+            var dateValue = dateInput.value;
+
+            // Check if the values are empty
+            // 1. if values are empty? do nothing
+            // 2. if values are not empty? continue
+            if (taskValue.length == 0 || dateValue.length == 0) {
+                return
+            }
+            
+           
+            var button= "<button onclick='deleteElementById(" + id + ")'>complete</button>"
+            var newRow = "<tr  id='" + id + "'> <th>" + taskValue + "</th> <th>" + dateValue +  button + "   </th>    </tr> " 
+
+            table.innerHTML += newRow
+
+            taskInput.value = ""
+            dateInput.value = ""
+            id = id + 1
+
+
+
+
+
+		} 
+       
+        
+    
+        function deleteElementById(id) {
+        
+            document.getElementById(id).remove();
+            console.log(id)
+      
+}
+
+
+
+        
+
+
+    </script>
+
+
+
+
+    <style>
+
+    </style>
+</body>
+</html>
